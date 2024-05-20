@@ -23,12 +23,18 @@ pipeline {
             }
         }
 
-        // stage('Test') {
-        //     steps {
-        //         // Run the tests using Maven
-        //         sh './mvnw test'
-        //     }
-        // }
+        stage('Test') {
+            steps {
+                // Run tests using Maven Wrapper
+                sh './mvnw test'
+            }
+            post {
+                always {
+                    // Archive the test results to display them in Jenkins
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
 
         // stage('Code Quality Analysis') {
         //     steps {
