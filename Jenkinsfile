@@ -6,8 +6,8 @@ pipeline {
         // JAVA_HOME = tool name: 'openjdk-21', type: 'jdk'
         // PATH = "${env.JAVA_HOME}/bin:${env.PATH}"
         DOCKER_IMAGE = "spring-boot-app:latest"
-        DATADOG_API_KEY = credentials('70f4230f697ae781329ad8f7de09f384')
-        DATADOG_APP_KEY = credentials('8cb22c662e1803696e84b87d7f177a2b1bf36679')
+        DATADOG_API_KEY = credentials('datadog-api-key')
+        // DATADOG_APP_KEY = credentials('8cb22c662e1803696e84b87d7f177a2b1bf36679')
     }
 
     stages {
