@@ -1,12 +1,12 @@
 pipeline {
     agent any
 
-    // environment {
-    //     Define any environment variables needed for the pipeline
-    //     JAVA_HOME = tool name: 'openjdk-21', type: 'jdk'
-    //     PATH = "${env.JAVA_HOME}/bin:${env.PATH}"
-    //     DOCKER_IMAGE = "spring-boot-java21:latest"
-    // }
+    environment {
+        // Define any environment variables needed for the pipeline
+        // JAVA_HOME = tool name: 'openjdk-21', type: 'jdk'
+        // PATH = "${env.JAVA_HOME}/bin:${env.PATH}"
+        DOCKER_IMAGE = "spring-boot-app:latest"
+    }
 
     stages {
         // stage('Checkout') {
@@ -47,23 +47,24 @@ pipeline {
             }
         }
 
-        // stage('Build Docker Image') {
-        //     steps {
-        //         // Build a Docker image for the application
-        //         script {
-        //             docker.build(env.DOCKER_IMAGE)
-        //         }
-        //     }
-        // }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    docker.build(env.DOCKER_IMAGE)
+                }
+            }
+        }
 
-        // stage('Deploy to Staging') {
-        //     steps {
-        //         // Deploy the application to the staging environment
-        //         script {
-        //             sh 'docker run -d -p 8081:8080 --name spring-boot-java21-staging ${DOCKER_IMAGE}'
-        //         }
-        //     }
-        // }
+        stage('Deploy to Staging') {
+            steps {
+                script {
+                    sh '''
+                        docker-compose down
+                        docker-compose up -d --build
+                    '''
+                }
+            }
+        }
 
         // stage('Release to Production') {
         //     steps {

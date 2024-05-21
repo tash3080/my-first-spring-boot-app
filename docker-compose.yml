@@ -1,0 +1,7 @@
+version: '3'
+services:
+  app:
+    image: spring-boot-app:latest
+    build: .
+    ports:
+      - "8181:8181"
