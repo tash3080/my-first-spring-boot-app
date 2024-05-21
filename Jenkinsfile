@@ -18,6 +18,7 @@ pipeline {
 
         stage('Build') {
             steps {
+                echo "Build Stage!"
                 // Build the application using Maven
                 sh './mvnw clean package'
             }
@@ -25,6 +26,7 @@ pipeline {
 
         stage('Test') {
             steps {
+                echo "Test Stage!"
                 // Run tests using Maven Wrapper
                 sh './mvnw test'
             }
@@ -36,14 +38,14 @@ pipeline {
             }
         }
 
-        // stage('Code Quality Analysis') {
-        //     steps {
-        //         // Run SonarQube analysis (assumes SonarQube is installed and configured in Jenkins)
-        //         withSonarQubeEnv('SonarQube') {
-        //             sh './mvnw sonar:sonar -Dsonar.projectKey=spring-boot-java21'
-        //         }
-        //     }
-        // }
+        stage('Code Quality Analysis') {
+            steps {
+                // Run SonarQube analysis (assumes SonarQube is installed and configured in Jenkins)
+                withSonarQubeEnv('sonarqube') {
+                    sh './mvnw sonar:sonar'
+                }
+            }
+        }
 
         // stage('Build Docker Image') {
         //     steps {
