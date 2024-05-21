@@ -6,6 +6,8 @@ pipeline {
         // JAVA_HOME = tool name: 'openjdk-21', type: 'jdk'
         // PATH = "${env.JAVA_HOME}/bin:${env.PATH}"
         DOCKER_IMAGE = "spring-boot-app:latest"
+        DATADOG_API_KEY = credentials('70f4230f697ae781329ad8f7de09f384')
+        DATADOG_APP_KEY = credentials('8cb22c662e1803696e84b87d7f177a2b1bf36679')
     }
 
     stages {
@@ -66,29 +68,23 @@ pipeline {
             }
         }
 
-        // stage('Release to Production') {
-        //     steps {
-        //         // Deploy the application to the production environment
-        //         script {
-        //             // Stop and remove the existing container if it exists
-        //             sh '''
-        //                 if [ "$(docker ps -q -f name=spring-boot-java21)" ]; then
-        //                     docker stop spring-boot-java21
-        //                     docker rm spring-boot-java21
-        //                 fi
-        //             '''
-        //             // Run the new container
-        //             sh 'docker run -d -p 8080:8080 --name spring-boot-java21 ${DOCKER_IMAGE}'
-        //         }
-        //     }
-        // }
-
-        // stage('Post-deployment Monitoring') {
-        //     steps {
-        //         // Configure monitoring (assuming you have monitoring tools configured, e.g., New Relic, Datadog)
-        //         echo 'Monitoring and alerting setup steps go here'
-        //     }
-        // }
+        stage('Post-deployment Monitoring') {
+            steps {
+                script {
+                    // Send deployment notification to Datadog
+                    sh '''
+                        curl -X POST "https://api.datadoghq.com/api/v1/events" \
+                        -H "Content-Type: application/json" \
+                        -H "DD-API-KEY: ${DATADOG_API_KEY}" \
+                        -d '{
+                              "title": "Deployment Successful",
+                              "text": "The application has been successfully deployed to production.",
+                              "alert_type": "success"
+                            }'
+                    '''
+                }
+            }
+        }
     }
 
     post {
