@@ -8,6 +8,6 @@ public class WelcomePageController {
 
     @GetMapping("/")
     public String welcome() {
-        return "Welcome to my very first Spring Boot application!";
+        return "<h1>Welcome to my very first Spring Boot application!<h1>";
     }
 }
