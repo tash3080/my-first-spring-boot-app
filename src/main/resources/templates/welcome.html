@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Welcome</title>
@@ -28,6 +28,45 @@
         <h1>Welcome to my very first Spring Boot application!</h1>
         <p>Current Date and Time: <span th:text="${currentDateTime}"></span></p>
         <p>Useful Info: <span th:text="${usefulInfo}"></span></p>
+    </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Welcome</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to my very first Spring Boot application!</h1>
+        <p>Current Time: <span th:text="${currentTime}"></span></p>
+        <p>Current Date: <span th:text="${currentDate}"></span></p>
+        <p>Quote of the Day: <span th:text="${quoteOfTheDay}"></span></p>
+        <p><span th:text="${greeting}"></span></p>
     </div>
 </body>
 </html>
