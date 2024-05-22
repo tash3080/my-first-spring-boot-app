@@ -168,6 +168,7 @@ pipeline {
                           "alert_type": "error"
                         }'
                 '''
+            }
         }
     }
 }
