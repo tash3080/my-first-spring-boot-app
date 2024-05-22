@@ -1,9 +1,3 @@
-// package com.shahriar.app.rest;
-
-// public class WelcomePageController {
-    
-// }
-
 package com.shahriar.app.rest;
 
 import org.springframework.web.bind.annotation.GetMapping;

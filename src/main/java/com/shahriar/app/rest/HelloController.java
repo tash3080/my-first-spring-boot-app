@@ -1,10 +1,3 @@
-// package com.shahriar.app.rest;
-
-// public class HelloController {
-    
-// }
-
-
 package com.shahriar.app.rest;
 
 import org.springframework.web.bind.annotation.GetMapping;
