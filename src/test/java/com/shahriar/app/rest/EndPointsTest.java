@@ -17,7 +17,7 @@ class EndPointsTest {
     private MockMvc mockMvc;
 
     @Test
-    public void testHomeEndpoint() throws Exception {
+    void testHomeEndpoint() throws Exception {
         // Test the / endpoint
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk());
@@ -25,7 +25,7 @@ class EndPointsTest {
     }
 
     @Test
-    public void testHelloEndpoint() throws Exception {
+    void testHelloEndpoint() throws Exception {
         // Test the /hello endpoint
         mockMvc.perform(get("/hello"))
                 .andExpect(status().isOk())
