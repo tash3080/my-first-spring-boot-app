@@ -12,7 +12,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest
 class EndPointsTest {
-
     @Autowired
     private MockMvc mockMvc;
 
@@ -21,7 +20,6 @@ class EndPointsTest {
         // Test the / endpoint
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk());
-                // .andExpect(content().string(containsString("Welcome")));
     }
 
     @Test

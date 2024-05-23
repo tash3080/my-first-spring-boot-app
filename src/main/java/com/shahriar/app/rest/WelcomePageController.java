@@ -36,7 +36,8 @@ public class WelcomePageController {
             greeting = "Good evening!";
         }
 
-        // Quote of the day (this could be fetched from an API or database in a real application)
+        // Quote of the day (this could be fetched from an API or database in a real
+        // application)
         String quoteOfTheDay = "Keep your face always toward the sunshine—and shadows will fall behind you. - Walt Whitman";
 
         // Add attributes to the model
