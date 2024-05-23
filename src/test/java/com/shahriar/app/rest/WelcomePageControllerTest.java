@@ -57,7 +57,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 @ExtendWith(MockitoExtension.class)
-public class WelcomePageControllerTest {
+class WelcomePageControllerTest {
 
     @Mock
     Model model;
@@ -66,7 +66,7 @@ public class WelcomePageControllerTest {
     WelcomePageController controller;
 
     @Test
-    public void testWelcome() {
+    void testWelcome() {
         // Define the time zone for Melbourne, Australia
         ZoneId zoneId = ZoneId.of("Australia/Melbourne");
 
